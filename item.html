@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Adams Collectables - Item Details</title>
+    <style>
+        /* CSS styles for layout and structure */
+        body {
+            font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            position: relative;
+            height: 100px; /* Adjust the height of the header */
+            background-color: #f9f9f9;
+        }
+
+        .header-image {
+            display: block;
+            width: 100%;
+            height: 250px;
+            object-fit: none;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 20px;
+            margin: 20px;
+        }
+
+        .item-details {
+            flex: 2;
+            padding: 10px;
+        }
+
+        .item-images {
+            flex: 1;
+            padding: 10px;
+        }
+
+        .item-images img {
+            width: 100%;
+            max-width: 200px;
+            margin-bottom: 10px;
+        }
+
+        h1, h2, h3, h4 {
+            color: #56a303;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Adams Collectables</h1>
+        <img class="header-image" src="header.jpg" alt="Header Image">
+    </header>
+
+    <div class="container">
+        <div class="sidebar">
+            <h2>Menu</h2>
+            <ul>
+                <li class="dropdown">
+                    <a href="#">Menu</a>
+                    <div class="dropdown-content">
+                        <a href="index.html">Home</a>
+                        <a href="catalog.html">Catalog</a>
+                        <a href="catalog_category.html">Catalog by Category</a>
+                        <a href="blog.html">Blog</a>
+                        <a href="contact.html">Contact Us</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="content">
+            <!-- Item Details -->
+            <div class="item-details">
+                <h2 id="item-name">Item Name</h2>
+                <p id="item-price">Price: $99.99</p>
+                <button type="button">Buy Now</button>
+                <p>Description:</p>
+                <p id="item-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec convallis sapien at ex varius, nec ultricies sem eleifend. Mauris efficitur, velit eu tincidunt sollicitudin, lorem mauris tincidunt ligula, vitae venenatis metus est in felis. Sed pharetra nisl in semper eleifend.</p>
+            </div>
+
+            <!-- Item Images -->
+            <div class="item-images">
+                <img src="item-image-1.jpg" alt="Item Image 1">
+                <img src="item-image-2.jpg" alt="Item Image 2">
+                <img src="item-image-3.jpg" alt="Item Image 3">
+                <!-- Add more images here if needed -->
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <!-- Footer content -->
+    </footer>
+
+    <script>
+        // Add JavaScript to handle item clicks and update the details
+        const items = document.querySelectorAll('.item');
+        const itemName = document.getElementById('item-name');
+        const itemPrice = document.getElementById('item-price');
+        const itemDescription = document.getElementById('item-description');
+
+        items.forEach((item) => {
+            item.addEventListener('click', () => {
+                itemName.textContent = item.querySelector('h4').textContent;
+                itemPrice.textContent = item.querySelector('p').textContent;
+                itemDescription.textContent = item.querySelector('.item-description p').textContent;
+            });
+        });
+    </script>
+</body>
+</html>

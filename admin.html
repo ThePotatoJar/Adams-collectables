@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Page</title>
+</head>
+<body>
+    <h1>Admin Page</h1>
+
+    <h2>Choose a Page to Edit:</h2>
+    <select id="page-list" onchange="loadPage()">
+        <option disabled selected>Select a page</option>
+    </select>
+
+    <h2>Edit Page:</h2>
+    <form id="edit-form">
+        <label for="page-title">Page Title:</label>
+        <input type="text" id="page-title" name="page-title" required><br><br>
+
+        <label for="page-content">Page Content:</label>
+        <textarea id="page-content" name="page-content" required></textarea><br><br>
+
+        <input type="submit" value="Save Changes">
+    </form>
+
+    <script>
+        // Function to load a selected page
+        function loadPage() {
+            var pageList = document.getElementById("page-list");
+            var selectedPage = pageList.options[pageList.selectedIndex].value;
+
+            if (selectedPage !== "") {
+                // Fetch the selected page's content
+                fetch(selectedPage)
+                    .then(response => response.text())
+                    .then(data => {
+                        var parser = new DOMParser();
+                        var htmlDoc = parser.parseFromString(data, "text/html");
+
+                        // Extract the title and content from the fetched HTML
+                        var pageTitle = htmlDoc.querySelector("title").textContent;
+                        var pageContent = htmlDoc.querySelector("body").innerHTML;
+
+                        // Update the form fields with the loaded page content
+                        document.getElementById("page-title").value = pageTitle;
+                        document.getElementById("page-content").value = pageContent;
+                    })
+                    .catch(error => {
+                        console.error("Error fetching page:", error);
+                    });
+            }
+        }
+
+        // Function to save changes when the form is submitted
+        document.getElementById("edit-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            var pageList = document.getElementById("page-list");
+            var selectedPage = pageList.options[pageList.selectedIndex].value;
+
+            if (selectedPage !== "") {
+                // Retrieve form values
+                var pageTitle = document.getElementById("page-title").value;
+                var pageContent = document.getElementById("page-content").value;
+
+                // Perform actions to save changes (e.g., send data to server, update database, etc.)
+                // Here, we'll simply display an alert with the entered values
+                alert("Page: " + selectedPage + "\nNew Title: " + pageTitle + "\nNew Content: " + pageContent);
+
+                // Reset the form
+                document.getElementById("edit-form").reset();
+            }
+        });
+
+        // Fetch and populate the page list
+        fetchPageList();
+
+        function fetchPageList() {
+            // Get the base URL of the current page
+            var baseUrl = window.location.href;
+            baseUrl = baseUrl.substring(0, baseUrl.lastIndexOf("/") + 1);
+
+            fetch(baseUrl)
+                .then(response => response.text())
+                .then(data => {
+                    var parser = new DOMParser();
+                    var htmlDoc = parser.parseFromString(data, "text/html");
+
+                    // Find all anchor tags with .html extension
+                    var pageLinks = Array.from(htmlDoc.querySelectorAll("a")).filter(a => a.href.endsWith(".html"));
+
+                    // Populate the page list select element
+                    var pageList = document.getElementById("page-list");
+
+                    pageLinks.forEach(function(link) {
+                        var option = document.createElement("option");
+                        option.value = link.href;
+                        option.text = link.href.split("/").pop();
+                        pageList.appendChild(option);
+                    });
+                })
+                .catch(error => {
+                    console.error("Error fetching page list:", error);
+                });
+        }
+    </script>
+</body>
+</html>

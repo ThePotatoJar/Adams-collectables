@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Adams Collectables</title>
+    <style>
+        /* CSS styles for the dropdown menu */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* CSS styles for layout and structure */
+        body {
+            font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            position: relative;
+            height: 100px; /* Adjust the height of the header */
+            background-color: #f9f9f9;
+        }
+
+        .header-image {
+            display: block;
+            width: 100%;
+            height: 250px;
+            object-fit: none;
+        }
+
+        footer {
+            background-color: #8b4513;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .sidebar {
+            flex: 1;
+            max-width: 200px;
+            border-right: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        .content {
+            flex: 3;
+            padding: 10px;
+        }
+
+        .container {
+           display: grid;
+           grid-template-columns: repeat(3, 1fr);
+           grid-gap: 20px;
+           margin: 20px;
+       }
+
+    	.category {
+          width: 100%;
+          max-height: 325px; /* Set a maximum height for the category container */
+          border: 1px solid #ccc;
+          padding: 10px;
+          margin-bottom: 10px;
+          background-color: #f9f9f9;
+          text-align: center;
+          cursor: pointer;
+      }
+
+       .category img {
+          width: 100%;
+          max-width: 200px;
+          margin-bottom: 10px;
+     }
+
+        h1, h2 {
+            color: #56a303;
+        }
+
+        h3, h4 {
+            color: #5303a3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Adams Collectables</h1>
+        <img class="header-image" src="header.jpg" alt="Header Image">
+    </header>
+
+    <div class="container">
+        <div class="sidebar">
+            <h2>Menu</h2>
+            <div class="dropdown">
+                <a href="#">Navigation</a>
+                <div class="dropdown-content">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="catalog.html">Catalog</a></li>
+                        <li><a href="catalog_category.html">Catalog by Category</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <!-- Landing Page Image -->
+            <h2>Welcome to Adams Collectables</h2>
+            <div class="category">
+                <a href="catalog_category.html?category=tables">
+                    <img src="table.jpg" alt="Tables">
+                    <h3>Tables</h3>
+                </a>
+            </div>
+            <div class="category">
+                <a href="catalog_category.html?category=chairs">
+                    <img src="chair.jpg" alt="Chairs">
+                    <h3>Chairs</h3>
+                </a>
+            </div>
+            <div class="category">
+                <a href="catalog_category.html?category=dressers">
+                    <img src="dresser.jpg" alt="Dressers">
+                    <h3>Dressers</h3>
+                </a>
+            </div>
+            <div class="category">
+                <a href="catalog_category.html?category=vanities">
+                    <img src="vanity.jpg" alt="Vanities">
+                    <h3>Vanities</h3>
+                </a>
+            </div>
+            <div class="category">
+                <a href="catalog_category.html?category=lamps">
+                    <img src="lamp.jpg" alt="Lamps">
+                    <h3>Lamps</h3>
+                </a>
+            </div>
+            <div class="category">
+                <a href="catalog_category.html?category=nightstands">
+                    <img src="nightstand.jpg" alt="Nightstands">
+                    <h3>Nightstands</h3>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+    <footer>
+        <p>&copy; 2023 Adams Collectables. All rights reserved.</p>
+    </footer>
+</body>
+</html>

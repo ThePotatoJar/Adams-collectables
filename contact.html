@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Us</title>
+    <style>
+        /* Existing CSS styles for other elements */
+        .contact-info {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .info-group {
+            margin-bottom: 20px;
+        }
+
+        .info-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .info-text {
+            width: 100%;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        .header-image {
+            display: block;
+            width: 100%;
+            height: 250px;
+            object-fit: none;
+        }
+
+        footer {
+            background-color: #8b4513;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Added CSS for the dropdown menu */
+        .sidebar {
+            background-color: #f1f1f1;
+            padding: 10px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .dropdown-content li {
+            padding: 10px;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Adams Collectables</h1>
+        <img class="header-image" src="header.jpg" alt="Header Image" width="1900" height="250">
+    </header>
+
+    <div class="container">
+        <div class="sidebar">
+            <h2>Menu</h2>
+            <div class="dropdown">
+                <a href="#">Navigation</a>
+                <div class="dropdown-content">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="catalog.html">Catalog</a></li>
+                        <li><a href="catalog_category.html">Catalog by Category</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <h1>Contact Us</h1>
+            <div class="contact-info">
+                <div class="info-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" class="info-text" value="Adam Beard" disabled>
+                </div>
+                <div class="info-group">
+                    <label for="address">Address:</label>
+                    <input type="text" id="address" class="info-text" value="123 Playground St" disabled>
+                </div>
+                <div class="info-group">
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" class="info-text" value="501-123-4567" disabled>
+                </div>
+                <div class="info-group">
+                    <label for="email">Email Address:</label>
+                    <input type="email" id="email" class="info-text" value="business@email.com" disabled>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function() {
+            $('.dropdown').hover(function() {
+                $(this).find('.dropdown-content').toggle();
+            });
+        });
+    </script>
+
+    <footer>
+        <p>&copy; 2023 Adams Collectables. All rights reserved.</p>
+    </footer>
+</body>
+</html>
