@@ -79,7 +79,7 @@
             <div class="item-details">
                 <h2 id="item-name">Item Name</h2>
                 <p id="item-price">Price: $99.99</p>
-                <button type="button">Buy Now</button>
+                <button type="button" onclick="redirectToPurchase()">Buy Now</button>
                 <p>Description:</p>
                 <p id="item-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec convallis sapien at ex varius, nec ultricies sem eleifend. Mauris efficitur, velit eu tincidunt sollicitudin, lorem mauris tincidunt ligula, vitae venenatis metus est in felis. Sed pharetra nisl in semper eleifend.</p>
             </div>
@@ -99,19 +99,10 @@
     </footer>
 
     <script>
-        // Add JavaScript to handle item clicks and update the details
-        const items = document.querySelectorAll('.item');
-        const itemName = document.getElementById('item-name');
-        const itemPrice = document.getElementById('item-price');
-        const itemDescription = document.getElementById('item-description');
-
-        items.forEach((item) => {
-            item.addEventListener('click', () => {
-                itemName.textContent = item.querySelector('h4').textContent;
-                itemPrice.textContent = item.querySelector('p').textContent;
-                itemDescription.textContent = item.querySelector('.item-description p').textContent;
-            });
-        });
+        // Function to redirect to the purchase page
+        function redirectToPurchase() {
+            window.open("purchase.html", "_blank");
+        }
     </script>
 </body>
 </html>
